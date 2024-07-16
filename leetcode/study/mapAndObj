@@ -1,0 +1,25 @@
+// Using Map
+let map = new Map();
+map.set('a', 1);
+map.set('b', 2);
+map.set(1, 'one'); // key is a number
+map.set({}, 'empty object'); // key is an object
+
+console.log(map.get('a')); // 1
+console.log(map.get(1)); // 'one'
+console.log(map.size); // 4
+map.delete('b');
+console.log(map.size); // 3
+
+// Using Object
+let obj = {};
+obj['a'] = 1;
+obj['b'] = 2;
+obj[1] = 'one'; // key is coerced to string '1'
+obj[{}] = 'empty object'; // key is coerced to '[object Object]'
+
+console.log(obj['a']); // 1
+console.log(obj['1']); // 'one' (numeric key coerced to string)
+console.log(Object.keys(obj).length); // 3
+delete obj['b'];
+console.log(Object.keys(obj).length); // 2
