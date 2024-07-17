@@ -2,6 +2,8 @@
 // eg aaa and zzz
 //eg abc and def
 //not eg aaa and abc
+//[aa, bb, zzz], [abc, def]
+//abb, cdd
 
 const findBuddies = (arr) => {
     const bigReturnArray = []
@@ -23,16 +25,24 @@ const findBuddies = (arr) => {
     return bigReturnArray
 }
 
-const checkIfEqualDist = (a, b) => {
-    arrA = [...a]
-    arrB = [...b]
+const checkIfEqualDist = (arrA, arrB) => {
+    //string is already an array
+    // arrA = [...a]
+    // arrB = [...b]
     let flag = false
-    for(let i=0; i<arrA.length; i++){
-        if((arrA[i]-arrB[i])==(arrA[i+1]-arrB[i+1]))
-            flag = true
-        else
-            flag = false
+    const diff = (arrA[0]-arrB[0])
+    for(let i=1; i<arrA.length; i++){
+        // store in var (arrA[i]-arrB[i])
+        if((arrA[i]-arrB[i]) != diff)
+            return false;
     }
     //why this line >_<
-    return (flag==true)?true:false
+    return true;
 }
+
+// 1 2 3 4 5 6
+[1,3], [2,4,6]
+
+// abc cef
+
+/
