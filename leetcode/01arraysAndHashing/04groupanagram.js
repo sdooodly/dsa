@@ -18,22 +18,14 @@
  * @param {string[]} strs
  * @return {string[][]}
  */
-var groupAnagrams = function(strs) {
-    const strsSorted = []
-    strs.forEach((str)=>{
-        // strsSorted[indexOf(Str)]=sortFunction(str)
-        strsSorted[indexOf(str)]=str.split('').sort().join('')
-        console.log(strsSorted[indexOf(str)])
-    }
-    )
-    for(let i=0, i< strs.length; i++){
-        const mainString = strsSorted[i]
-        for(let j=0; j<strs.length; j++){
-            if(str)
+var groupAnagrams = function (strs) {
+    let map = new Map();
+    for (let str of strs) {
+        let sortedStr = str.split('').sort().join('');
+        if (!map.has(sortedStr)) {
+            map.set(sortedStr, []);
         }
+        map.get(sortedStr).push(str);
     }
-    
+    return Array.from(map.values());
 };
-const sortFunction = (str) => {
-
-}
