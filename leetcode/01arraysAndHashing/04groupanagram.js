@@ -1,31 +1,17 @@
-//https://leetcode.com/problems/group-anagrams/description/
-//Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+// https://leetcode.com/problems/group-anagrams/
+//  time O(n * (k + k log k + k + 1 + 1))= O(n * k log k)
+// space = O(n^2) + O(k)
+//strings
+// sorted:[others]
+// return others
+const groupAnagrams = strs => {
+  const anagramObj = {};
+  for(const str of strs){
+    const sortedStr = str.split('').sort().join();
+    if(anagramObj[sortedStr]) anagramObj[sortedStr].push(str)
+    else anagramObj[sortedStr] = [str]
+  }
+  return Object.values(anagramObj)
+}
+console.log(groupAnagrams(["eat","tea","tan","ate","nat","bat"]))
 
-// An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
-
-// Input: strs = ["eat","tea","tan","ate","nat","bat"]
-// Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
-// Example 2:
-
-// Input: strs = [""]
-// Output: [[""]]
-// Example 3:
-
-// Input: strs = ["a"]
-// Output: [["a"]]
-
-/**
- * @param {string[]} strs
- * @return {string[][]}
- */
-var groupAnagrams = function (strs) {
-    let map = new Map();
-    for (let str of strs) {
-        let sortedStr = str.split('').sort().join('');
-        if (!map.has(sortedStr)) {
-            map.set(sortedStr, []);
-        }
-        map.get(sortedStr).push(str);
-    }
-    return Array.from(map.values());
-};
